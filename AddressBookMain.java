@@ -20,6 +20,7 @@ public class AddressBookMain {
             System.out.println("1:INSERT");
             System.out.println("2:DISPLAY");
             System.out.println("3:EDIT");
+            System.out.println("4:DELETE");
             System.out.println("0: EXIT");
 
             System.out.println("ENTER YOUR CHOICE :");
@@ -58,6 +59,9 @@ public class AddressBookMain {
                     while(displayItems.hasNext()){
                         Contacts show=displayItems.next();
                         System.out.println(show);
+                    }
+                    if(displayItems.hasNext()==false){
+                        System.out.println("NO DETAILS TO DISPLAY");
                     }
 
                     break;
@@ -99,10 +103,29 @@ public class AddressBookMain {
                     }
                     else
                         System.out.println("edited successfully");
+                    break;
+                case 4:
+                    boolean deleteItemFound=false;
+                    Iterator <Contacts> deletingMood=contactsAdd.iterator();
 
-
+                    System.out.println("ENTER THE FIRSTNAME TO DELETE");
+                    String nameSearch=userInputString.nextLine();
+                    while(deletingMood.hasNext()){
+                        Contacts dataD=deletingMood.next();
+                        if(nameSearch.equals(dataD.firstName)){
+                            deletingMood.remove();
+                            deleteItemFound=true;
+                        }
+                    }
+                    if(!deleteItemFound){
+                        System.out.println("not found");
+                    }
+                    else
+                        System.out.println("deleted successfully");
+                    break;
 
             }
+
 
         }while (choice !=0);
 
