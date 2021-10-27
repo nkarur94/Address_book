@@ -1,5 +1,5 @@
 package com.bridgelabz;
-import java.lang.reflect.Array;
+import javax.swing.*;
 import java.util.*;
 
 public class AddressBookMain {
@@ -19,7 +19,9 @@ public class AddressBookMain {
         do {
             System.out.println("1:INSERT");
             System.out.println("2:DISPLAY");
+            System.out.println("3:EDIT");
             System.out.println("0: EXIT");
+
             System.out.println("ENTER YOUR CHOICE :");
             choice=userInput.nextInt();
 
@@ -57,7 +59,48 @@ public class AddressBookMain {
                         Contacts show=displayItems.next();
                         System.out.println(show);
                     }
+
                     break;
+                case 3:
+                    boolean found=false;
+                    Iterator <Contacts> editingMood=contactsAdd.iterator();
+
+                    System.out.println("ENTER THE FIRST NAME FOR EDITING");
+                    firstName=userInputString.nextLine();
+                    while(editingMood.hasNext()) {
+                        Contacts data = editingMood.next();
+                        if ((data.firstName).equals(firstName)) {
+                            int index= contactsAdd.indexOf(data);
+                            lastName = data.lastName;
+                            System.out.println("ENTER THE NEW ADDRESS");
+                            address = userInputString.nextLine();
+
+                            System.out.println("ENTER THE NEW CITY");
+                            city = userInputString.nextLine();
+
+                            System.out.println("ENTER THE NEW STATE");
+                            state = userInputString.nextLine();
+
+                            System.out.println("ENTER THE NEW ZIP CODE");
+                            zipCode = userInput.nextInt();
+
+                            System.out.println("ENTER THE NEW EMAIL ID");
+                            eMail = userInputString.nextLine();
+
+                            System.out.println("ENTER THE NEW PHONE NUMBER");
+                            phoneNumber = userInput.nextInt();
+
+                            contactsAdd.set(index, new Contacts(firstName, lastName, address, city, state, zipCode, eMail, phoneNumber));
+                            found = true;
+                        }
+                    }
+                    if (!found){
+                        System.out.println("not found");
+                    }
+                    else
+                        System.out.println("edited successfully");
+
+
 
             }
 
