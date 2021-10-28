@@ -11,9 +11,19 @@ public class AddressBookMain {
      /@iterator class used to get the content from the object one by one
      */
     public static void main(String[] args) {
+        String firstName=null;
+        String lastName=null;
+        String address=null;
+        String city=null;
+        String state=null;
+        int zipCode=0;
+        String eMail=null;
+        long phoneNumber=0;
+
+        Contacts adding=new Contacts(firstName, lastName, address, city, state, zipCode, eMail, phoneNumber );
         ArrayList <Contacts> contactsAdd=new ArrayList<>();
+
         Scanner userInput=new Scanner(System.in);
-        Scanner userInputString=new Scanner(System.in);
 
         int choice=-1;
         do {
@@ -28,100 +38,19 @@ public class AddressBookMain {
 
             switch(choice){
                 case 1:
-                    System.out.print("ENTER YOUR FIRSTNAME :");
-                    String firstName=userInputString.nextLine();
-
-                    System.out.print("ENTER YOUR LASTNAME :");
-                    String lastName=userInputString.nextLine();
-
-                    System.out.print("ENTER YOUR ADDRESS :");
-                    String address=userInputString.nextLine();
-
-                    System.out.print("ENTER YOUR CITY :");
-                    String city=userInputString.nextLine();
-
-                    System.out.print("ENTER YOUR STATE :");
-                    String state=userInputString.nextLine();
-
-                    System.out.print("ENTER YOUR ZIPCODE :");
-                    int zipCode=userInput.nextInt();
-
-                    System.out.print("ENTER YOUR EMAIL ID :");
-                    String eMail=userInputString.nextLine();
-
-                    System.out.print("ENTER YOUR PHONE NUMBER :");
-                    long phoneNumber=userInput.nextLong();
-
-                    contactsAdd.add(new Contacts(firstName, lastName, address, city, state, zipCode, eMail, phoneNumber ));
+                    adding.addContact();
                 break;
+
                 case 2:
-                    Iterator <Contacts> displayItems=contactsAdd.iterator();
-                    while(displayItems.hasNext()){
-                        Contacts show=displayItems.next();
-                        System.out.println(show);
-                    }
-                    if(displayItems.hasNext()==false){
-                        System.out.println("NO DETAILS TO DISPLAY");
-                    }
+                   adding.display();
+                break;
 
-                    break;
                 case 3:
-                    boolean found=false;
-                    Iterator <Contacts> editingMood=contactsAdd.iterator();
+                    adding.editing();
+                break;
 
-                    System.out.println("ENTER THE FIRST NAME FOR EDITING");
-                    firstName=userInputString.nextLine();
-                    while(editingMood.hasNext()) {
-                        Contacts data = editingMood.next();
-                        if ((data.firstName).equals(firstName)) {
-                            int index= contactsAdd.indexOf(data);
-                            lastName = data.lastName;
-                            System.out.println("ENTER THE NEW ADDRESS");
-                            address = userInputString.nextLine();
-
-                            System.out.println("ENTER THE NEW CITY");
-                            city = userInputString.nextLine();
-
-                            System.out.println("ENTER THE NEW STATE");
-                            state = userInputString.nextLine();
-
-                            System.out.println("ENTER THE NEW ZIP CODE");
-                            zipCode = userInput.nextInt();
-
-                            System.out.println("ENTER THE NEW EMAIL ID");
-                            eMail = userInputString.nextLine();
-
-                            System.out.println("ENTER THE NEW PHONE NUMBER");
-                            phoneNumber = userInput.nextInt();
-
-                            contactsAdd.set(index, new Contacts(firstName, lastName, address, city, state, zipCode, eMail, phoneNumber));
-                            found = true;
-                        }
-                    }
-                    if (!found){
-                        System.out.println("not found");
-                    }
-                    else
-                        System.out.println("edited successfully");
-                    break;
                 case 4:
-                    boolean deleteItemFound=false;
-                    Iterator <Contacts> deletingMood=contactsAdd.iterator();
-
-                    System.out.println("ENTER THE FIRSTNAME TO DELETE");
-                    String nameSearch=userInputString.nextLine();
-                    while(deletingMood.hasNext()){
-                        Contacts dataD=deletingMood.next();
-                        if(nameSearch.equals(dataD.firstName)){
-                            deletingMood.remove();
-                            deleteItemFound=true;
-                        }
-                    }
-                    if(!deleteItemFound){
-                        System.out.println("not found");
-                    }
-                    else
-                        System.out.println("deleted successfully");
+                    adding.deleting();
                     break;
 
             }
