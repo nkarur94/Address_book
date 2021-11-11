@@ -26,34 +26,33 @@ public class Contacts {
     }
     ArrayList<Contacts> insideContact=new ArrayList<>();
 
-    public void addContact(){
-        System.out.print("ENTER YOUR FIRSTNAME :");
-        firstName=userInput.nextLine();
-
-        System.out.print("ENTER YOUR LASTNAME :");
-        lastName=userInput.nextLine();
-
-        System.out.print("ENTER YOUR ADDRESS :");
-        address=userInput.nextLine();
-
-        System.out.print("ENTER YOUR CITY :");
-        city=userInput.nextLine();
-
-        System.out.print("ENTER YOUR STATE :");
-        state=userInput.nextLine();
-
-        System.out.print("ENTER YOUR ZIPCODE :");
-        zipCode=userInput.nextInt();
+    public void addContact() {
+        System.out.println("enter the no of contacts you want to add");
+        int noOfContacts = userInput.nextInt();
         userInput.nextLine();
-
-        System.out.print("ENTER YOUR EMAIL ID :");
-        eMail=userInput.nextLine();
-
-        System.out.print("ENTER YOUR PHONE NUMBER :");
-        phoneNumber=userInput.nextLong();
-        userInput.nextLine();
-        insideContact.add(new Contacts(firstName,lastName,address,city,state,zipCode,eMail,phoneNumber));
+        for (int i = 0; i < noOfContacts; i++) {
+            System.out.print("ENTER YOUR FIRSTNAME :");
+            firstName = userInput.nextLine();
+            System.out.print("ENTER YOUR LASTNAME :");
+            lastName = userInput.nextLine();
+            System.out.print("ENTER YOUR ADDRESS :");
+            address = userInput.nextLine();
+            System.out.print("ENTER YOUR CITY :");
+            city = userInput.nextLine();
+            System.out.print("ENTER YOUR STATE :");
+            state = userInput.nextLine();
+            System.out.print("ENTER YOUR ZIPCODE :");
+            zipCode = userInput.nextInt();
+            userInput.nextLine();
+            System.out.print("ENTER YOUR EMAIL ID :");
+            eMail = userInput.nextLine();
+            System.out.print("ENTER YOUR PHONE NUMBER :");
+            phoneNumber = userInput.nextLong();
+            userInput.nextLine();
+            insideContact.add(new Contacts(firstName, lastName, address, city, state, zipCode, eMail, phoneNumber));
+        }
     }
+
 
     public void display(){
 
@@ -65,7 +64,7 @@ public class Contacts {
         }
 
         if(displayItems.hasNext()==false){
-            System.out.println("NO DETAILS TO DISPLAY");
+            System.out.println("--NO MORE DETAILS TO DISPLAY--");
         }
     }
 
@@ -169,16 +168,16 @@ public class Contacts {
 
     @Override
     public String toString() {
-        return "Contacts{" +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", zipCode=" + zipCode +
-                ", eMail='" + eMail + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                '}';
+        return "CONTACTS-->\n" +
+                " FIRST NAME='" + firstName + '\'' +
+                ", LAST NAME='" + lastName + '\'' +
+                "ADDRESS='" + address + '\'' +
+                ", CITY='" + city + '\'' +
+                ", STATE='" + state + '\'' +
+                ", ZIP CODE=" + zipCode +
+                ", EMAIL-ID='" + eMail + '\'' +
+                ", PHONE NUMBER=" + phoneNumber
+                ;
     }
 }
 
